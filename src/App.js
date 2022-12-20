@@ -58,6 +58,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1 style={{fontFamily: 'monospace', color: "orange", fontSize: "40px"}}>Dani AI</h1>
       <form className="inputBox" onSubmit={handleSubmit}>
         <textarea type="text" className="input" placeholder="Ask me anything." required onChange={(event) => setInput(event.target.value)}></textarea>
         <button type="submit" className="submit">{loading ? "Loading..." : "Go"}</button>
