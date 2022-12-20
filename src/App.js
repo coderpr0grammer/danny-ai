@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import logo from './logo.svg';
+// import { uuid } from 'uuidv4';
 
 
 function App() {
-
   const [input, setInput] = useState("");
   const [GPTResponse, setGPTResponse] = useState("");
+  const [responsesArray, setResponsesArray] = useState([]);
+  useEffect(() => {
+    console.log(JSON.parse(localStorage.getItem("responsesArray")))
+    setResponsesArray(JSON.parse(localStorage.getItem("responsesArray")))
+    // setResponsesArray(JSON.parse(localStorage.getItem("responsesArray")))
+    // console.log("responsesarray", responsesArray)
+  }, [])
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`The name you entered was: ${input}`)
+    let responseObject = {question: input, response: ""}
+    
+    // alert(`The name you entered was: ${input}`)
     // query({prompt: "what is the meaning of life?"}).then((response) => {
     //   console.log(response) 
     //   })
@@ -24,19 +33,34 @@ function App() {
     },
   body: JSON.stringify({prompt: input})
 }).then((response) => response.json())
-  .then((data) => {console.log(data.result); setGPTResponse(data.result)})
+  .then((data) => {
+    responseObject.response = data.result;
+    // console.log(responseObject)
+    // console.log(data.result);
+    setGPTResponse(responseObject)
+    setResponsesArray(responsesArray => [...responsesArray, responseObject])
+    localStorage.setItem("responsesArray", JSON.stringify(responsesArray))
+    // console.log(responsesArray)
+  })
 
   }
 
   return (
-    <div className="App" style={{backgroundColor: "#121212", overflow: "hidden"}}>
+    <div className="App" style={{backgroundColor: "#121212"}}>
       <form className="inputBox" onSubmit={handleSubmit}>
-        <input type="text" className="input" placeholder="Ask me anything." onChange={(event) => setInput(event.target.value)}></input>
+        <input type="text" className="input" placeholder="Ask me anything." required onChange={(event) => setInput(event.target.value)}></input>
         <button type="submit" className="submit">Go</button>
       </form>
       <br />
-      {GPTResponse ? 
-        <div style={{color: "white"}} className="response">{GPTResponse}</div>
+      {responsesArray ? 
+        <div style={{color: "white"}} className="allResponses">{responsesArray.map((theResponse, i) => {return (
+          <div className="responseBox">
+
+            <div className="question">{theResponse.question}</div>
+            <div className="response">{theResponse.response}</div>
+          </div>
+
+          )})}</div>
          : ""}
     </div>
   );

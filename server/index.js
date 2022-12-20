@@ -1,9 +1,14 @@
 const express = require('express');
 const app = express()
+var bodyParser = require('body-parser')
 const port = 3001;
 require('dotenv').config({ path: require('find-config')('.env') })
 const cors = require('cors');
 app.use(cors())
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+app.use(bodyParser.json())
 
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -17,7 +22,7 @@ async function request(req) {
 	// console.log(req)
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
-	  prompt: req.body,
+	  prompt: req.prompt,
 	  max_tokens: 256,
 	  temperature: 0,
   });
@@ -43,7 +48,7 @@ app.post('/', (req, res) => {
 	// res.send("hi")
 	// let output = request().then((result) => console.log(result))
 	let output = null;
-	// request(req.body).then((result) => {res.json(result)}).then((data) => {output = data; console.log(data)})
+	request(req.body).then((result) => {res.json(result)}).then((data) => {output = data; console.log(data)})
 	
 })
 
