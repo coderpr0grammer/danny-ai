@@ -48,9 +48,9 @@ function App() {
   }
 
   return (
-    <div className="App" style={{backgroundColor: "#121212"}}>
+    <div className="App">
       <form className="inputBox" onSubmit={handleSubmit}>
-        <input type="text" className="input" placeholder="Ask me anything." required onChange={(event) => setInput(event.target.value)}></input>
+        <textarea type="text" className="input" placeholder="Ask me anything." required onChange={(event) => setInput(event.target.value)}></textarea>
         <button type="submit" className="submit">Go</button>
       </form>
       <br />
