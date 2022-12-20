@@ -32,7 +32,7 @@ function App() {
     //   console.log(response) 
     //   })
 
-    const response = fetch('http://localhost:3001/', {
+    const response = fetch('https://dani-ai-server.vercel.app/api', {
       method: 'POST',
       mode: 'cors',
       headers: {
