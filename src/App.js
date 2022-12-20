@@ -38,9 +38,11 @@ function App() {
     // console.log(responseObject)
     // console.log(data.result);
     setGPTResponse(responseObject)
-    setResponsesArray(responsesArray => [...responsesArray, responseObject])
-    localStorage.setItem("responsesArray", JSON.stringify(responsesArray))
-    // console.log(responsesArray)
+    let otherResponseArray = responsesArray;
+    otherResponseArray.push(responseObject)
+    setResponsesArray(otherResponseArray)
+    localStorage.setItem("responsesArray", JSON.stringify(otherResponseArray))
+    console.log(responsesArray)
   })
 
   }
