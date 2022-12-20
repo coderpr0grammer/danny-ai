@@ -8,6 +8,8 @@ function App() {
   const [input, setInput] = useState("");
   const [GPTResponse, setGPTResponse] = useState("");
   const [responsesArray, setResponsesArray] = useState([]);
+  const [loading, setLoading] = useState(0)
+
   useEffect(() => {
     console.log(JSON.parse(localStorage.getItem("responsesArray")))
     setResponsesArray(JSON.parse(localStorage.getItem("responsesArray")))
@@ -15,7 +17,13 @@ function App() {
     // console.log("responsesarray", responsesArray)
   }, [])
 
+  useEffect((event) => {
+    console.log(event)
+  }, [input])
+
   const handleSubmit = (event) => {
+    setLoading(1);
+    console.log(loading)
     event.preventDefault();
     let responseObject = {question: input, response: ""}
     
@@ -43,6 +51,7 @@ function App() {
     setResponsesArray(otherResponseArray)
     localStorage.setItem("responsesArray", JSON.stringify(otherResponseArray))
     console.log(responsesArray)
+    setLoading(0);
   })
 
   }
@@ -51,7 +60,7 @@ function App() {
     <div className="App">
       <form className="inputBox" onSubmit={handleSubmit}>
         <textarea type="text" className="input" placeholder="Ask me anything." required onChange={(event) => setInput(event.target.value)}></textarea>
-        <button type="submit" className="submit">Go</button>
+        <button type="submit" className="submit">{loading ? "Loading..." : "Go"}</button>
       </form>
       <br />
       {responsesArray ? 
