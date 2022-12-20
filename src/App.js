@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     console.log(JSON.parse(localStorage.getItem("responsesArray")))
-    setResponsesArray(JSON.parse(localStorage.getItem("responsesArray")))
+    localStorage.getItem ? setResponsesArray(JSON.parse(localStorage.getItem("responsesArray"))) : setResponsesArray([])
     // setResponsesArray(JSON.parse(localStorage.getItem("responsesArray")))
     // console.log("responsesarray", responsesArray)
   }, [])
