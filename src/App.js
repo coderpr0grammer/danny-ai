@@ -11,6 +11,7 @@ function App() {
   const [loading, setLoading] = useState(0)
 
   useEffect(() => {
+    document.title = "Dani AI - Ask me anything.";
     console.log(JSON.parse(localStorage.getItem("responsesArray")))
     localStorage.getItem ? setResponsesArray(JSON.parse(localStorage.getItem("responsesArray"))) : setResponsesArray([])
     // setResponsesArray(JSON.parse(localStorage.getItem("responsesArray")))
