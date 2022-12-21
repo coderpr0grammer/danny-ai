@@ -34,7 +34,7 @@ function App() {
   }
 
   const handleSubmit = (event) => {
-    setInput("");
+    // setInput("");
     setButtonDisabled(1)
     setLoading(1);
     console.log(loading)
@@ -75,7 +75,7 @@ function App() {
     <div className="App">
       <h1 style={{fontFamily: 'monospace', color: "orange", fontSize: "40px"}}>Dani AI</h1>
       <form className="inputBox" onSubmit={handleSubmit}>
-        <textarea type="text" className="input" placeholder="Ask me anything." required onChange={(event) => setInput(event.target.value)}>{input}</textarea>
+        <textarea type="text" className="input" placeholder="Ask me anything." required onChange={(event) => setInput(event.target.value)}></textarea>
         <button type="submit" className="submit" disabled={buttonDisabled}>{loading ? <img src={loader} style width="50" height="50"/> : "Go"}</button>
       </form>
       <br />
