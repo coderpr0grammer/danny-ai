@@ -99,7 +99,8 @@ transition: 0.2s;
 /*  background-color: rgba(255, 255, 255, 0.8);*/
     color: orange;
     cursor:pointer;
-    background-color: rgb(0 0 0 / 50%);
+    background-color: #141418;
+
 }
 
 .input {
