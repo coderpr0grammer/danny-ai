@@ -13,6 +13,7 @@ function App() {
 
 
   useEffect(() => {
+    setButtonDisabled(0)
     document.title = "Dani AI - Ask me anything.";
     console.log(JSON.parse(localStorage.getItem("responsesArray")))
     localStorage.getItem ? setResponsesArray(JSON.parse(localStorage.getItem("responsesArray"))) : setResponsesArray([])
@@ -28,10 +29,11 @@ function App() {
     if (buttonDisabled) {
       return;
     }
-    setButtonDisabled(1)
+    
   }
 
   const handleSubmit = (event) => {
+    setButtonDisabled(1)
     setLoading(1);
     console.log(loading)
     event.preventDefault();
@@ -52,6 +54,7 @@ function App() {
   body: JSON.stringify({prompt: input})
 }).then((response) => response.json())
   .then((data) => {
+    setButtonDisabled(0)
     responseObject.response = data.result;
     // console.log(responseObject)
     // console.log(data.result);
@@ -71,7 +74,7 @@ function App() {
       <h1 style={{fontFamily: 'monospace', color: "orange", fontSize: "40px"}}>Dani AI</h1>
       <form className="inputBox" onSubmit={handleSubmit}>
         <textarea type="text" className="input" placeholder="Ask me anything." required onChange={(event) => setInput(event.target.value)}></textarea>
-        <button type="submit" className="submit" onClick={disableButton} disabled={buttonDisabled}>{loading ? "Loading..." : "Go"}</button>
+        <button type="submit" className="submit" disabled={buttonDisabled}>{loading ? "Loading..." : "Go"}</button>
       </form>
       <br />
       {responsesArray ? 
