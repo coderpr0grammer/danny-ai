@@ -8,7 +8,9 @@ function App() {
   const [input, setInput] = useState("");
   const [GPTResponse, setGPTResponse] = useState("");
   const [responsesArray, setResponsesArray] = useState([]);
-  const [loading, setLoading] = useState(0)
+  const [loading, setLoading] = useState(0);
+  const [buttonDisabled, setButtonDisabled] = useState (0);
+
 
   useEffect(() => {
     document.title = "Dani AI - Ask me anything.";
@@ -21,6 +23,13 @@ function App() {
   useEffect((event) => {
     console.log(event)
   }, [input])
+
+  const disableButton = (e) => {
+    if (buttonDisabled) {
+      return;
+    }
+    setButtonDisabled(1)
+  }
 
   const handleSubmit = (event) => {
     setLoading(1);
@@ -62,7 +71,7 @@ function App() {
       <h1 style={{fontFamily: 'monospace', color: "orange", fontSize: "40px"}}>Dani AI</h1>
       <form className="inputBox" onSubmit={handleSubmit}>
         <textarea type="text" className="input" placeholder="Ask me anything." required onChange={(event) => setInput(event.target.value)}></textarea>
-        <button type="submit" className="submit">{loading ? "Loading..." : "Go"}</button>
+        <button type="submit" className="submit" onClick={disableButton} disabled={buttonDisabled}>{loading ? "Loading..." : "Go"}</button>
       </form>
       <br />
       {responsesArray ? 
