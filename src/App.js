@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import logo from './logo.svg';
-import loader from './loader.svg'
+import loader from './loader.svg';
 // import { uuid } from 'uuidv4';
 
 
@@ -75,7 +75,16 @@ function App() {
       <h1 style={{fontFamily: 'monospace', color: "orange", fontSize: "40px"}}>Dani AI</h1>
       <form className="inputBox" onSubmit={handleSubmit}>
         <textarea type="text" className="input" placeholder="Ask me anything." required onChange={(event) => setInput(event.target.value)}></textarea>
-        <button type="submit" className="submit" disabled={buttonDisabled}>{loading ? <img src={loader} width="50" height="50"/> : "Go"}</button>
+        <button type="submit" className="submit" disabled={buttonDisabled}>{loading ? <?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(241, 242, 243); display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+<g transform="translate(50,50)">
+  <g transform="scale(0.7)">
+  <circle cx="0" cy="0" r="50" fill="#f97924"></circle>
+  <circle cx="0" cy="-28" r="15" fill="#2c2c2c">
+    <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 0 0;360 0 0"></animateTransform>
+  </circle>
+  </g>
+</g> : "Go"}</button>
       </form>
       <br />
       {responsesArray ? 
