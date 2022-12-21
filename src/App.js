@@ -60,7 +60,7 @@ function App() {
     // console.log(data.result);
     setGPTResponse(responseObject)
     let otherResponseArray = responsesArray || [];
-    otherResponseArray.push(responseObject)
+    otherResponseArray.unshift(responseObject)
     setResponsesArray(otherResponseArray)
     localStorage.setItem("responsesArray", JSON.stringify(otherResponseArray))
     console.log(responsesArray)
