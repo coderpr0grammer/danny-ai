@@ -81,7 +81,7 @@ function App() {
     <div className="App">
       <h1 style={{fontFamily: 'monospace', color: "orange", fontSize: "40px"}}>Dani AI</h1>
       <form className="inputBox" onSubmit={handleSubmit}>
-        <textarea type="text" className="input" placeholder="Ask me anything. I'll answer." required onChange={(event) => handleInput(event.target)} style={{maxHeight: "200px", overflowY: "auto"}} rows="1">{input}</textarea>
+        <textarea type="text" className="input" placeholder="Ask me anything." required onChange={(event) => handleInput(event.target)} style={{maxHeight: "200px", overflowY: "auto"}} rows="1">{input}</textarea>
         <button type="submit" className="submit" disabled={buttonDisabled}>{loading ? <img src={loader} width="50" height="50"/> : "Go"}</button>
       </form>
       <br />
