@@ -62,6 +62,7 @@
   min-width: 50vw;*/
 /*  min-height: 2vw;*/
   display:flex;
+  resize: none;
 /*  justify-content: center;
   align-items: center;*/
 }
@@ -90,7 +91,6 @@ border: none;
 /*font-family: Roboto, sans-serif;*/
 font-family: inherit;
 font-size:20px;
-margin-left:-20px;
 z-index: 2000;
 transition: 0.2s;
 }
@@ -118,13 +118,13 @@ transition: 0.2s;
   max-height:200px;
   font-size: 20px;
 /*  font-family: Roboto, sans-serif;*/
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px;
 /*  border:none;*/
 /*  box-shadow: 0px 1px 5px 1px rgba(255, 255, 255, 0.2);*/
   outline: 0;
   transition:0.5s;
   z-index: 0;
-/*  resize:none;*/
+  resize:none;
 /*  overflow-y:scroll;*/
 }
 
