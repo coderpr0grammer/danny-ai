@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import logo from './logo.svg';
 import loader from './loader.svg';
+import AdSense from 'react-adsense';
 // import { uuid } from 'uuidv4';
 
 
@@ -78,11 +79,8 @@ function App() {
   }
 
   return (
-    <><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4802401755527530"
-     crossorigin="anonymous"></script>
-    <div className="App">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4802401755527530"
-     crossorigin="anonymous"></script>
+    <div className="App"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4802401755527530"
+    crossorigin="anonymous"></script>
       <h1 style={{fontFamily: 'monospace', color: "orange", fontSize: "40px"}}>Dani AI</h1>
       <form className="inputBox" onSubmit={handleSubmit}>
         <textarea type="text" className="input" placeholder="Ask me anything." required onChange={(event) => handleInput(event.target)} style={{maxHeight: "200px", overflowY: "auto"}} rows="1">{input}</textarea>
@@ -100,7 +98,6 @@ function App() {
           )})}</div>
          : ""}
     </div>
-    </>
   );
 }
 
