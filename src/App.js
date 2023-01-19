@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     setButtonDisabled(0)
-    document.title = "Dani AI - Ask me anything.";
+    document.title = "Dani Ai - Ask me anything.";
     console.log(JSON.parse(localStorage.getItem("responsesArray")))
     localStorage.getItem ? setResponsesArray(JSON.parse(localStorage.getItem("responsesArray"))) : setResponsesArray([])
     // setResponsesArray(JSON.parse(localStorage.getItem("responsesArray")))
@@ -79,9 +79,8 @@ function App() {
   }
 
   return (
-    <div className="App"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4802401755527530"
-    crossorigin="anonymous"></script>
-      <h1 style={{fontFamily: 'monospace', color: "orange", fontSize: "40px"}}>Dani AI</h1>
+    <div className="App">
+      <h1 style={{fontFamily: 'monospace', color: "orange", fontSize: "40px"}}>Dani Ai</h1>
       <form className="inputBox" onSubmit={handleSubmit}>
         <textarea type="text" className="input" placeholder="Ask me anything." required onChange={(event) => handleInput(event.target)} style={{maxHeight: "200px", overflowY: "auto"}} rows="1">{input}</textarea>
         <button type="submit" className="submit" disabled={buttonDisabled}>{loading ? <img src={loader} width="50" height="50"/> : "Go"}</button>
