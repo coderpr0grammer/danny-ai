@@ -78,6 +78,8 @@ function App() {
   }
 
   return (
+    <><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4802401755527530"
+     crossorigin="anonymous"></script>
     <div className="App">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4802401755527530"
      crossorigin="anonymous"></script>
@@ -98,6 +100,7 @@ function App() {
           )})}</div>
          : ""}
     </div>
+    </>
   );
 }
 
