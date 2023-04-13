@@ -40,7 +40,8 @@ function App() {
     setLoading(1);
     console.log(loading)
     event.preventDefault();
-    let responseObject = {question: input, response: ""}
+    let newMessage = { 'role': 'user', 'content': input}
+    // let responseObject = {question: input, response: ""}
     
     // alert(`The name you entered was: ${input}`)
     // query({prompt: "what is the meaning of life?"}).then((response) => {
@@ -54,16 +55,15 @@ function App() {
           'Content-Type': 'application/json'
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
-  body: JSON.stringify({prompt: input})
+  body: JSON.stringify({prompt: [newMessage, ...responsesArray]})
 }).then((response) => response.json())
   .then((data) => {
     setButtonDisabled(0)
-    responseObject.response = data.result;
     // console.log(responseObject)
     // console.log(data.result);
-    setGPTResponse(responseObject)
+    setGPTResponse({ 'role': 'assistant', 'content': data.result})
     let otherResponseArray = responsesArray || [];
-    console.log(otherResponseArray.unshift(responseObject))
+    console.log(otherResponseArray.unshift({ 'role': 'assistant', 'content': data.result}))
     setResponsesArray(otherResponseArray)
     localStorage.setItem("responsesArray", JSON.stringify(otherResponseArray))
     console.log(responsesArray)
